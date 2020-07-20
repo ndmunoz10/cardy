@@ -48,6 +48,10 @@ class ThemeUtils {
             appFontWeight: AppFontWeight.regular,
             appFontSize: AppFontSize.big
         );
+
+    ///--------------------------------------------------------------------------------------------
+    ///-----------------------------------------PUBLIC METHODS-------------------------------------
+    ///--------------------------------------------------------------------------------------------
     
     /// Creates a Poppins font with the [color], [appFontWeight] and [appFontSize] values.
     static TextStyle _createPoppinsFont({
