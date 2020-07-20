@@ -8,7 +8,7 @@ class CardWidget extends StatelessWidget {
     CardWidget(this.backgroundColor);
     
     @override
-    Widget build(BuildContext context) => _createMainContainer();
+    Widget build(BuildContext context) => _createMainContainer(context);
     
     Widget _createAmountText() =>
         Text(
@@ -20,29 +20,25 @@ class CardWidget extends StatelessWidget {
             ),
         );
     
-    Widget _createBottomCardContainer() =>
+    Widget _createBottomCardContainer(BuildContext context) =>
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-                _createNumberAndUserNameContainer(),
-                _createShareContainer()
+                _createNumberAndUserNameContainer(context),
+                _createShareContainer(context)
             ],
         );
     
     Widget _createFranchiseIcon() =>
         Image.asset(kMasterIcon, width: 70, height: 70);
     
-    Widget _createNumberAndUserNameContainer() =>
+    Widget _createNumberAndUserNameContainer(BuildContext context) =>
         Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
                 Text(
                     "3746 **** **** 2877",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500
-                    ),
+                    style: Theme.of(context).textTheme.bodyText2,
                 ),
                 Text(
                     "NICOLAS MUÑOZ",
@@ -55,7 +51,7 @@ class CardWidget extends StatelessWidget {
             ],
         );
     
-    Widget _createShareContainer() =>
+    Widget _createShareContainer(BuildContext context) =>
         Container(
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
@@ -68,7 +64,7 @@ class CardWidget extends StatelessWidget {
             ),
         );
     
-    Widget _createTopCardContainer() =>
+    Widget _createTopCardContainer(BuildContext context) =>
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -77,16 +73,16 @@ class CardWidget extends StatelessWidget {
             ],
         );
     
-    Widget _createCardChildrenContainer() =>
+    Widget _createCardChildrenContainer(BuildContext context) =>
         Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-                _createTopCardContainer(),
-                _createBottomCardContainer()
+                _createTopCardContainer(context),
+                _createBottomCardContainer(context)
             ],
         );
     
-    Widget _createMainContainer() =>
+    Widget _createMainContainer(BuildContext context) =>
         Container(
             height: 220,
             margin: EdgeInsets.all(16),
@@ -100,6 +96,6 @@ class CardWidget extends StatelessWidget {
                     )
                 ]
             ),
-            child: _createCardChildrenContainer(),
+            child: _createCardChildrenContainer(context),
         );
 }

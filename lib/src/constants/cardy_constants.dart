@@ -1,5 +1,5 @@
 // Cardy Header
-const double kTitleHorizontalPadding = 16;
+const double kHomeContainerHorizontalPadding = 16;
 
 // Cardy Card
 const double kCardRadius = 25;
