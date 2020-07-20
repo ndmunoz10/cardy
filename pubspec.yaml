@@ -5,7 +5,7 @@ homepage: https://github.com/ndmunoz10/cardy
 version: 1.0.0
 
 environment:
-    sdk: ">=2.1.0 <3.0.0"
+    sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
     google_fonts: ^1.1.0
