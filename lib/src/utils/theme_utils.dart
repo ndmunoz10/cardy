@@ -24,15 +24,7 @@ class ThemeUtils {
     
     /// Returns the background color of the AppBar.
     static Color getBkgAppBar(BuildContext context) => context.dynamicColor(light: colorWhite, dark: colorBlack);
-    
-    /// Returns the text style for the main title that goes in each screen.
-    static TextStyle getScreenTitleStyle(BuildContext context) =>
-        _createPoppinsFont(
-            color: context.dynamicColor(light: colorBlack, dark: colorWhite),
-            appFontWeight: AppFontWeight.semiBold,
-            appFontSize: AppFontSize.extraBig
-        );
-    
+
     /// Returns the text style for the big texts in the credit card widget.
     static TextStyle getCardNormalTextStyle(BuildContext context) =>
         _createOpenSansFont(
@@ -48,6 +40,19 @@ class ThemeUtils {
             appFontWeight: AppFontWeight.regular,
             appFontSize: AppFontSize.big
         );
+    
+    /// Returns the text style for the main title that goes in each screen.
+    static TextStyle getScreenTitleStyle(BuildContext context) =>
+        _createPoppinsFont(
+            color: context.dynamicColor(light: colorBlack, dark: colorWhite),
+            appFontWeight: AppFontWeight.semiBold,
+            appFontSize: AppFontSize.extraBig
+        );
+    
+    /// Returns the brightness of the status bar. Notice that it is the opposite of the actual
+    /// brightness of the application.
+    static Brightness getStatusBarBrightness(BuildContext context) =>
+        MediaQuery.of(context).platformBrightness == Brightness.light ? Brightness.dark : Brightness.light;
 
     ///--------------------------------------------------------------------------------------------
     ///-----------------------------------------PUBLIC METHODS-------------------------------------

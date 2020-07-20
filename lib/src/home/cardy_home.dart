@@ -81,7 +81,7 @@ class CardyHome extends StatelessWidget {
     Widget _createStatusBarContainer(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
             statusBarColor: ThemeUtils.getBkgAppBar(context),
-            statusBarIconBrightness: MediaQuery.of(context).platformBrightness == Brightness.light ? Brightness.dark : Brightness.light
+            statusBarIconBrightness: ThemeUtils.getStatusBarBrightness(context)
         ),
         child: _createHomeContainer(context),
     );
