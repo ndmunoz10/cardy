@@ -46,10 +46,40 @@ class CardWidget extends StatelessWidget {
                 _createShareContainer(context)
             ],
         );
+
+    /// Creates the column that contains the rest of the children of this card
+    /// are located.
+    Widget _createCardChildrenContainer(BuildContext context) =>
+        Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+                _createTopCardContainer(context),
+                SizedBox(height: kCenterSpacing),
+                _createBottomCardContainer(context)
+            ],
+        );
     
     /// Creates the franchise icon of this card.
     Widget _createFranchiseIcon() =>
         Image.asset(kMasterIcon, width: kCardFranchiseLogoSize, height: kCardFranchiseLogoSize);
+
+    /// Creates the main container of this card with the required decoration.
+    Widget _createMainContainer(BuildContext context) =>
+        Container(
+            margin: EdgeInsets.all(kCardMargin),
+            padding: EdgeInsets.all(kCardPadding),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(kCardRadius),
+                color: backgroundColor,
+                boxShadow: [
+                    BoxShadow(
+                        blurRadius: kCardShareBlurRadius,
+                        color: backgroundColor
+                    )
+                ]
+            ),
+            child: _createCardChildrenContainer(context),
+        );
     
     /// Creates the number and user name container along with their texts.
     Widget _createNumberAndUserNameContainer(BuildContext context) =>
@@ -89,35 +119,5 @@ class CardWidget extends StatelessWidget {
                 _createAmountText(context),
                 _createFranchiseIcon()
             ],
-        );
-    
-    /// Creates the column that contains the rest of the children of this card
-    /// are located.
-    Widget _createCardChildrenContainer(BuildContext context) =>
-        Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-                _createTopCardContainer(context),
-                SizedBox(height: kCenterSpacing),
-                _createBottomCardContainer(context)
-            ],
-        );
-    
-    /// Creates the main container of this card with the required decoration.
-    Widget _createMainContainer(BuildContext context) =>
-        Container(
-            margin: EdgeInsets.all(kCardMargin),
-            padding: EdgeInsets.all(kCardPadding),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(kCardRadius),
-                color: backgroundColor,
-                boxShadow: [
-                    BoxShadow(
-                        blurRadius: kCardShareBlurRadius,
-                        color: backgroundColor
-                    )
-                ]
-            ),
-            child: _createCardChildrenContainer(context),
         );
 }
