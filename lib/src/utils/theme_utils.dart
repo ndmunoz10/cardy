@@ -55,7 +55,7 @@ class ThemeUtils {
         MediaQuery.of(context).platformBrightness == Brightness.light ? Brightness.dark : Brightness.light;
 
     ///--------------------------------------------------------------------------------------------
-    ///-----------------------------------------PUBLIC METHODS-------------------------------------
+    ///-----------------------------------------PRIVATE METHODS------------------------------------
     ///--------------------------------------------------------------------------------------------
     
     /// Creates a Poppins font with the [color], [appFontWeight] and [appFontSize] values.
