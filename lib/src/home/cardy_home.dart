@@ -18,7 +18,7 @@ class CardyHome extends StatelessWidget {
     
     Widget _createAppBar(BuildContext context) => SliverAppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
-        expandedHeight: 80,
+        expandedHeight: kAppBarExpandedHeight,
         pinned: true,
         automaticallyImplyLeading: false,
         flexibleSpace: FlexibleSpaceBar(

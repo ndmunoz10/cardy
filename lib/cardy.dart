@@ -1,5 +1,5 @@
 import 'package:cardy/src/home/cardy_home.dart';
-import 'package:cardy/utils/theme_utils.dart';
+import 'package:cardy/src/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

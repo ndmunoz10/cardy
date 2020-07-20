@@ -1,4 +1,7 @@
-// Cardy Header
+// Cardy App Bar
+const double kAppBarExpandedHeight = 80;
+
+// Cardy Home
 const double kHomeContainerHorizontalPadding = 16;
 
 // Cardy Card
