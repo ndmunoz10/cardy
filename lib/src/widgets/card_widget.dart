@@ -1,25 +1,43 @@
-import 'package:cardy/src/constants/cardy_constants.dart';
+import 'package:cardy/src/constants/asset_constants.dart';
+import 'package:cardy/src/constants/dimen_constants.dart';
+import 'package:cardy/src/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
 
+/// The actual card to be displayed with the required information.
+/// Author: Nicolás David Muñoz Cuervo
 class CardWidget extends StatelessWidget {
     
+    ///--------------------------------------------------------------------------------------------
+    ///-----------------------------------------VARIABLES------------------------------------------
+    ///--------------------------------------------------------------------------------------------
+    
     final Color backgroundColor;
+
+    ///--------------------------------------------------------------------------------------------
+    ///-----------------------------------------CONSTRUCTOR----------------------------------------
+    ///--------------------------------------------------------------------------------------------
     
     CardWidget(this.backgroundColor);
+
+    ///--------------------------------------------------------------------------------------------
+    ///-----------------------------------------LIFE CYCLE-----------------------------------------
+    ///--------------------------------------------------------------------------------------------
     
     @override
     Widget build(BuildContext context) => _createMainContainer(context);
+
+    ///--------------------------------------------------------------------------------------------
+    ///-----------------------------------------PRIVATE UI METHODS---------------------------------
+    ///--------------------------------------------------------------------------------------------
     
-    Widget _createAmountText() =>
+    /// Creates the amount text of this card
+    Widget _createAmountText(BuildContext context) =>
         Text(
             "\$15.000",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold
-            ),
+            style: ThemeUtils.getCardNormalTextStyle(context),
         );
     
+    /// Creates the bottom part of this card
     Widget _createBottomCardContainer(BuildContext context) =>
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,34 +46,63 @@ class CardWidget extends StatelessWidget {
                 _createShareContainer(context)
             ],
         );
+
+    /// Creates the column that contains the rest of the children of this card
+    /// are located.
+    Widget _createCardChildrenContainer(BuildContext context) =>
+        Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+                _createTopCardContainer(context),
+                SizedBox(height: kCenterSpacing),
+                _createBottomCardContainer(context)
+            ],
+        );
     
+    /// Creates the franchise icon of this card.
     Widget _createFranchiseIcon() =>
-        Image.asset(kMasterIcon, width: 70, height: 70);
+        Image.asset(kMasterIcon, width: kCardFranchiseLogoSize, height: kCardFranchiseLogoSize);
+
+    /// Creates the main container of this card with the required decoration.
+    Widget _createMainContainer(BuildContext context) =>
+        Container(
+            margin: EdgeInsets.all(kCardMargin),
+            padding: EdgeInsets.all(kCardPadding),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(kCardRadius),
+                color: backgroundColor,
+                boxShadow: [
+                    BoxShadow(
+                        blurRadius: kCardShareBlurRadius,
+                        color: backgroundColor
+                    )
+                ]
+            ),
+            child: _createCardChildrenContainer(context),
+        );
     
+    /// Creates the number and user name container along with their texts.
     Widget _createNumberAndUserNameContainer(BuildContext context) =>
         Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
                 Text(
                     "3746 **** **** 2877",
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: ThemeUtils.getCardNormalTextStyle(context),
                 ),
                 Text(
-                    "NICOLAS MUÑOZ",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500
-                    ),
+                    "Nicolás Muñoz".toUpperCase(),
+                    style: ThemeUtils.getCardSmallTextStyle(context),
                 ),
             ],
         );
     
+    /// Creates the share button container.
     Widget _createShareContainer(BuildContext context) =>
         Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(kCardSharePadding),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(kCardShareBorderRadius),
                 color: Colors.white10
             ),
             child: Icon(
@@ -64,38 +111,13 @@ class CardWidget extends StatelessWidget {
             ),
         );
     
+    /// Creates the top part of this card.
     Widget _createTopCardContainer(BuildContext context) =>
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-                _createAmountText(),
+                _createAmountText(context),
                 _createFranchiseIcon()
             ],
-        );
-    
-    Widget _createCardChildrenContainer(BuildContext context) =>
-        Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-                _createTopCardContainer(context),
-                _createBottomCardContainer(context)
-            ],
-        );
-    
-    Widget _createMainContainer(BuildContext context) =>
-        Container(
-            height: 220,
-            margin: EdgeInsets.all(16),
-            padding: EdgeInsets.all(32),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(kCardRadius),
-                color: backgroundColor,
-                boxShadow: [
-                    BoxShadow(
-                        blurRadius: 10
-                    )
-                ]
-            ),
-            child: _createCardChildrenContainer(context),
         );
 }
